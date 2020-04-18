@@ -60,3 +60,6 @@ names(dataExtracted)[-c(1:2)] <-gsub("BodyBody","Body", names(dataExtracted)[-c(
 ##5.From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject
 ## we first group by activity and subject, then summarize all the columns for their mean and sort and then convert it back to dataframe
 dataTidy <- dataExtracted %>%group_by(activity, subject)%>%summarize_all(mean)%>%arrange(activity, subject)%>%ungroup%>%as.data.frame()
+
+##create the tidy data set
+write.table(dataTidy, "Tidydata.txt", row.name=FALSE)
