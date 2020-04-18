@@ -271,8 +271,8 @@ names(dataExtracted)
 ### 5. From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject
 
 ```{r}
-## we first group by activity and subject, then summarize all the columns for their mean and sort and then convert it back to dataframe
-dataTidy <- dataExtracted %>%group_by(activity, subject)%>%summarize_all(mean)%>%arrange(activity, subject)%>%ungroup%>%as.data.frame()
+## we first group by  subject and then activity, then summarize all the columns for their mean and sort and then convert it back to dataframe
+dataTidy <- dataExtracted %>%group_by( subject,activity)%>%summarize_all(mean)%>%arrange(subject,activity)%>%ungroup%>%as.data.frame()
 ```
 The dataTidy dataset includes the average of each variable for each activity and each subject. 10299 instances are split into 180 groups (30 subjects and 6 activities) and 66 mean and standard deviation features are averaged for each group. The resulting data table has 180 rows and 68 columns – 33 Mean variables + 33 Standard deviation variables + 1 Subject( 1 of of the 30 test subjects) + ActivityName. The tidy data set’s first row is the header containing the names for each column.
 
